@@ -89,11 +89,10 @@ if st.button("Recommend Jobs"):
             if job_index == index:
                 continue
 
-            st.markdown(f"### {count+1}. {df.loc[job_index,'Job Title']}")
-            st.write(df.loc[job_index, "Job Description"][:250] + "...")
+            st.markdown(f"### {count+1}. {df.iloc[job_index]['Job Title']}")
+            st.write(df.iloc[job_index]['Job Description'][:250] + "...")
             st.write(f"**Similarity Score:** {round(score*100,2)}%")
-            st.write("---")
-
+            st.write("-----")
             count += 1
 
             if count == 5:
