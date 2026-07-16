@@ -76,6 +76,7 @@ if st.button("Recommend Jobs"):
             key=lambda x: x[1],
             reverse=True
         )
+        similarity_scores = similarity_scores[1:] 
 
         count = 0
 
