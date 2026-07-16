@@ -9,7 +9,9 @@ st.title("Job Recommendation System")
 
 # Load Dataset
 df = pd.read_csv("cleaned_job_data.csv")
+
 df = df.drop_duplicates(subset=["Job Title"])
+df = df.reset_index(drop=True)
 
 # Load Similarity Matrix
 file_id = "1paoD9rHEMVKHih8Eba24rWdlQhtIonTQ"
