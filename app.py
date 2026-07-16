@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import os
+import gdown
+
 
 # Title
 st.title("Job Recommendation System")
@@ -9,8 +11,14 @@ st.title("Job Recommendation System")
 df = pd.read_csv("cleaned_job_title_des.csv")
 
 # Load Similarity Matrix
-with open("similarity.pkl", "rb") as file:
-    similarities = pickle.load(file)
+file_id = "1paoD9rHEMVKHih8Eba24rWdlQhtIonTQ"
+
+if not os.path.exists("similarity.pkl"):
+    gdown.download(
+        f"https://drive.google.com/uc?id={file_id}",
+        "similarity.pkl",
+        quiet=False
+    )
 
 # Job List
 jobs = df["Job Title"].tolist()
@@ -84,3 +92,4 @@ if st.button("Recommend Jobs"):
 
             if count == 5:
                 break
+            
