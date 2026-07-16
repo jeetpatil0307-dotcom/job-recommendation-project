@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import gdown
-
+import pickle
 
 # Title
 st.title("Job Recommendation System")
@@ -20,6 +20,8 @@ if not os.path.exists("similarity.pkl"):
         quiet=False
     )
 
+with open("similarity.pkl", "rb") as f:
+    similarities = pickle.load(f)
 # Job List
 jobs = df["Job Title"].tolist()
 
